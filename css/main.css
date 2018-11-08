@@ -19,15 +19,20 @@ html {
 body {
     color:black;
     background-color:black;
+    font-family: 'Roboto', sans-serif;;
     /*background-image:url();*/
 }
 
 div {
     color:white;
-    background-color: blue;
+
 }
 
 header{
+    height: 15%;
+   /* background-image: url("");*/
+    background-color: #888888;
+    color: grey;
 
 }
 
