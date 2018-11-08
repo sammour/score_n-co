@@ -39,9 +39,15 @@ content {
 
 }
 
-overlay {
+.overlay {
     background-color:grey;
 }
+
+button {
+
+}
+
+
 
 
 /*
