@@ -18,12 +18,13 @@ html {
 
 body {
     color:black;
+    font-family: 'Roboto', sans-serif;;
     background-color: #f3f6f9;
     /*background-image:url();*/
 }
 
 div {
-    color:white;
+    color:white;*
     background-color: blue;
     width: 100%;
 }
@@ -48,11 +49,13 @@ content {
     display: none;
 }
 
+.role {
+    background-color: #F3F6F9;
+}
+
 button {
 
 }
-
-
 
 
 /*
@@ -135,9 +138,52 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+.demo-list-two {
+    width: 300px;
+}
 
+.mdl-list__item-imp {
+    background-color: #E2E6EC;
+}
+/* style du bloc ul */
+.menu-vertical {
+    width: 250px; /* optionnel, c'est pour la démo */
+    list-style: none; /* supprime les puces de liste */
+    padding: 4px; /* on fait un peu de place autour des liens */
+    margin: 0; /* on annule les marges */
+    background: #F2F2F2;
 
+}
 
+/* styles des liens et éléments de liste */
+.mv-item,
+.mv-item a {
+    /* les liens et item deviennent des blocs */
+    /* suffit théoriquement à virer les puces de liste */
+    display: block;
+}
+
+/* styles des liens */
+.mv-item a {
+    margin: 1px 0; /* espace les liens d'1 px */
+    padding: 8px 20px; /* marges internes pour aérer */
+    color: #666;
+    background: #FFF;
+    text-decoration: none; /* on vire le soulignement */
+
+    /* on définit la transition pour les navigateurs */
+    -webkit-transition: all .3s; /* Chrome/Safari */
+    -moz-transition: all .3s; /* Firefox (plus trop nécessaire) */
+    transition: all .3s; /* syntaxe officielle */
+}
+
+/* styles changeants au survol et focus */
+.mv-item a:hover,
+.mv-item a:focus {
+    background: #1ABC9C;
+    color: #FFF;
+    padding-left: 30px; /* décalage du contenu de 10px vers la droite (30-20 = 10) */
+}
 
 
 
