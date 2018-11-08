@@ -18,29 +18,34 @@ html {
 
 body {
     color:black;
-    background-color:black;
+    background-color: #f3f6f9;
     /*background-image:url();*/
 }
 
 div {
     color:white;
     background-color: blue;
+    width: 100%;
 }
 
 header{
-
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
 footer{
-
+    padding: 0;
+    margin: 0;
 }
 
 content {
-
+    height: 500px;
 }
 
 .overlay {
     background-color:grey;
+    display: none;
 }
 
 button {
@@ -318,4 +323,30 @@ textarea {
     h3 {
         page-break-after: avoid;
     }
+}
+
+
+.je-participe {
+    width: 100%;
+    height: 200px;
+    background: #f3f6f9;
+}
+
+#Calque1 {
+    margin: 0;
+    width: 100%;
+}
+#Calque2 {
+    margin: 0;
+    width: 100%;
+}
+
+footer svg {
+    width: 100%;
+    height: auto;
+}
+
+header svg {
+    width: 100%;
+    height: auto;
 }
