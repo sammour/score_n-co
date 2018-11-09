@@ -607,7 +607,8 @@ header svg {
     padding: 0 5%;
     width: 90%;
     height: 66%;
-    background-image: url("../img/haut-final.svg");
+    background-image: url("../img/Banniere.jpg");
+    background-size: cover;
 }
 
 .pendantMatch-bandeau-image {
@@ -642,4 +643,36 @@ header svg {
 
 #pendantMatch-actions-startButton span {
     align-self: center;
+}
+
+
+#pendantMatch-bandeau-score--left {
+    padding: 7px;
+    background: rgba(0,0,0,0.15);
+    border-radius: 4px;
+    width: auto;
+    height: 36px;
+    font-size: 36px;
+    line-height: 36px;
+    color: #fff;
+}
+
+#pendantMatch-bandeau-score--right {
+    padding: 7px;
+    background: rgba(0,0,0,0.15);
+    border-radius: 4px;
+    width: auto;
+    height: 36px;
+    font-size: 36px;
+    line-height: 36px;
+    color: #fff;
+}
+
+
+.pendantMatch-bandeau-score--separator {
+    width: auto;
+    height: 36px;
+    font-size: 36px;
+    line-height: 36px;
+    color: #fff;
 }
