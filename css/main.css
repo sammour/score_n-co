@@ -49,6 +49,14 @@ content {
     display: none;
 }
 
+.scorer {
+    width: 100%;
+    length: 200px;
+    background-color:blue;
+
+
+}
+
 .role {
     background-color: #F3F6F9;
 }
