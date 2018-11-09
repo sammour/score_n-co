@@ -465,3 +465,7 @@ header svg {
     width: 100%;
     height: auto;
 }
+
+.mdl-data-table td{
+    height: 5px !important;
+}
