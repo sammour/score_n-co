@@ -24,7 +24,7 @@ body {
 }
 
 div {
-    color:white;*
+    color:darkgrey;
     background-color: blue;
     width: 100%;
 }
@@ -52,8 +52,7 @@ content {
 .scorer {
     width: 100%;
     length: 200px;
-    background-color:blue;
-
+   
 
 }
 
@@ -61,8 +60,58 @@ content {
     background-color: #F3F6F9;
 }
 
+/*.tableClass {
+    margin: 10px;
+    height: 100%;
+    width: 100%;
+    border: 2px solid;
+    border-collapse: collapse;
+    border-spacing: 0;
+}*/
+
+thead :nth-child(2n) {
+    background-color: #12D574;
+
+}
+
+thead {
+    background-color: #00A365;
+
+}
+
+tbody :nth-child(2n){
+    background-color:#E2E6EC;
+}
+
+mdl-data-table__cell--non-numeric{
+
+    color: white !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+th {
+    color: white !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
 button {
 
+}
+
+#DataTables_Table_0_filter {
+    display:none;
+}
+
+#DataTables_Table_0_length {
+    display:none;
+}
+
+#DataTables_Table_0_info {
+    display:none;
+}
+
+#DataTables_Table_0_paginate {
+    display:none;
 }
 
 
@@ -98,6 +147,8 @@ hr {
     margin: 1em 0;
     padding: 0;
 }
+
+
 
 /*
  * Remove the gap between audio, canvas, iframes,
@@ -193,13 +244,23 @@ textarea {
     padding-left: 30px; /* décalage du contenu de 10px vers la droite (30-20 = 10) */
 }
 
+/*
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
 
 
+#dom {
+
+}
+#ext {
 
 
+}
+#compteur {
 
-
-
+}
 
 
 
