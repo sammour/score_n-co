@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Titre de la page</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="compteur">
+	<div class="dom">
+		<h3>équipe 1</h3>
+		<div class="score">
+			0
+		</div>
+	</div>
+	<div class="ext">
+		<h3>équipe 2</h3>
+		<div class="score">
+			0
+		</div>
+	</div>
+</div>
+
+
+<div id="dom" class="add_point">
+	<div class="3_point">
+		<span>+3</span>
+	</div>
+	<div class="2_point">
+		<span>+2</span>
+	</div>
+	<div class="1_point">
+		<span>+1</span>
+	</div>
+	<div class="rm_point">
+		<span>-1</span>
+	</div>
+</div>
+
+<div id="ext" class="add_point">
+	<div class="3_point">
+		<span>+3</span>
+	</div>
+	<div class="2_point">
+		<span>+2</span>
+	</div>
+	<div class="1_point">
+		<span>+1</span>
+	</div>
+	<div class="rm_point">
+		<span>-1</span>
+	</div>
+</div>	
+
+<div class="compteur">
+	<!-- <div id="timer"></div> -->
+	<div id="timer">10:00</div>
+	<div id="quart-temp" class="1-qt">Q1</div>
+	<div id="state" class="start">START</div>
+</div>
+
+</body>
+
+<script>
+$(function() {
+
+	var custom_deadline = false
+
+	function get_deadline() {
+		let time_in_minutes = 0.1;
+		let current_time = Date.parse(new Date());
+		let deadline = new Date(current_time + time_in_minutes*60*1000);
+		return deadline		
+	}
+
+
+	function time_remaining(endtime){
+		let countdown   = Date.parse(endtime) - Date.parse(new Date());
+		let seconds     = Math.floor( (countdown/1000) % 60 );
+		let secondsTens = Math.floor(seconds / 10);
+		let secondsOnes = seconds % 10;
+		let minutes     = Math.floor( (countdown/1000/60) % 60 );
+		return {'total':countdown, 'minutes':minutes, 'secondsTens':secondsTens, 'secondsOnes':secondsOnes};
+	}
+
+
+	var timeinterval;
+	function run_clock(endtime){
+		function update_clock(){
+			let t = time_remaining(endtime);
+			$('#timer').html(t.minutes + ":" + t.secondsTens + t.secondsOnes);
+			if(t.total<=0){ 
+				clearInterval(timeinterval); 
+				let actual_class = $('#quart-temp').attr('class');
+				let qt = parseInt(actual_class) + 1;
+				$('#quart-temp').removeClass(actual_class).addClass(qt+'-qt').html('Q'+qt);
+				$('.compteur #state').removeClass('stop').addClass('start').text('START');	
+				$('#timer').html('10:00')
+				custom_deadline = true
+			}
+		}
+		update_clock(); // run function once at first to avoid delay
+		timeinterval = setInterval(update_clock,1000);
+	}
+	var deadline = get_deadline();
+	run_clock(deadline);
+
+
+	var paused = false; // is the clock paused?
+	var time_left; // time left on the clock when paused
+
+	function pause_clock(){
+		if(!paused){
+			paused = true;
+			clearInterval(timeinterval); // stop the clock
+			time_left = time_remaining(deadline).total; // preserve remaining time
+		}
+	}
+	pause_clock()
+	function resume_clock(custom_deadline=false){
+		if(paused){
+			paused = false;
+			deadline = custom_deadline ? get_deadline() :  new Date(Date.parse(new Date()) + time_left);
+			run_clock(deadline);
+		}
+	}
+
+
+	$(document).ready(function() {
+
+		$('.add_point div').click(function() {
+			let team  = $(this).parent('div').attr('id');
+			let point = parseInt($(this).find('span').text())
+			let compteur = '#compteur .'+team+' .score'
+			let old_score = parseInt($(compteur).text());
+			let new_score = old_score + point
+			$(compteur).text(new_score)
+		})
+
+		$('.compteur #state, .add_point div').click(function() {
+			let state = $('.compteur #state').attr('class')
+			if (state == 'start' && $(this).parent('.add_point').length == 0) {
+				if (custom_deadline) {
+					paused = true
+					resume_clock(custom_deadline)
+					custom_deadline = false;
+				} else {
+					resume_clock()					
+				}
+				$('.compteur #state').removeClass('start').addClass('stop').text('STOP')
+			} else if (state == 'stop')  {
+				$('.compteur #state').removeClass('stop').addClass('start').text('START')
+				pause_clock()
+			}
+		})
+	})
+})
+</script>
